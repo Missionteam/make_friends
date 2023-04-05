@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "922983099806",
+    "project_id": "make-friends-7f028",
+    "storage_bucket": "make-friends-7f028.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922983099806:android:07d69c641ad634ac14fa8f",
+        "android_client_info": {
+          "package_name": "com.example.make_friends_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922983099806-aclj89p2sr8ibfmhkdmfnltn6ablgglh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.make_friends_app",
+            "certificate_hash": "4906894179647f3ae678e2352dbd14a4d575b6c2"
+          }
+        },
+        {
+          "client_id": "922983099806-nmjs5pfp3sqt5dtbf63tranipiteh4ld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACQ2PRGKMCfDXWNtGka2vijBz9IHYx428"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "922983099806-nmjs5pfp3sqt5dtbf63tranipiteh4ld.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "922983099806-m5sfs4dclaomhp7hcv1nrpflu6k0iumh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.makeFriendsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
