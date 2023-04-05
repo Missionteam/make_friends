@@ -24,7 +24,7 @@ class AuthChecker extends ConsumerWidget {
           if (data != null) {
             return const MyApp();
           }
-          return IntroViewSample();
+          return const IntroViewSample();
         },
         loading: () => const LoadingScreen(),
         error: (e, trace) => ErrorScreen(e, trace));

@@ -42,12 +42,12 @@ class BtmNavigationBar extends ConsumerStatefulWidget {
 class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color.fromARGB(255, 3, 23, 77);
+    const backgroundColor = Color.fromARGB(255, 255, 255, 255);
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: widget.child,
         bottomNavigationBar: SizedBox(
-          height: 120,
+          height: 70,
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(

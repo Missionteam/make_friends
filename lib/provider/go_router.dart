@@ -7,7 +7,7 @@ import '../widget/btm_navigation_bar.dart';
 
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/AuthCheker',
+  initialLocation: '/Home',
   routes: <RouteBase>[
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
