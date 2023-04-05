@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:make_friends_app/provider/go_router.dart';
 import 'firebase_options.dart';
-
-import 'pages/home_page/home.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -21,12 +20,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      routerConfig: router,
     );
   }
 }
