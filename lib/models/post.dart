@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Post {
   Post({
     required this.text,
-    required this.roomId,
     required this.createdAt,
     required this.posterName,
     required this.posterImageUrl,
@@ -16,7 +15,7 @@ class Post {
     this.imageLocalPath = '',
   });
   final String text;
-  final String roomId;
+
   final Timestamp createdAt;
   final String posterName;
   final String posterImageUrl;
@@ -35,7 +34,7 @@ class Post {
     // map データが得られているのでここからはいつもと同じです。
     return Post(
       text: map['text'],
-      roomId: map['roomId'],
+
       createdAt: map['createdAt'],
       posterName: map['posterName'],
       posterImageUrl: map['posterImageUrl'],
@@ -52,7 +51,7 @@ class Post {
   Map<String, dynamic> toJson() {
     return {
       'text': text,
-      'roomId': roomId,
+
       'createdAt': createdAt,
       'posterName': posterName,
       'posterImageUrl': posterImageUrl,

@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:make_friends_app/pages/auth_page/register.dart';
 
 import '../../models/auth_model.dart';
 import '../../provider/cloud_messeging_provider.dart';
+import 'register.dart';
 
 class MailSignInPage extends ConsumerStatefulWidget {
   const MailSignInPage({super.key});

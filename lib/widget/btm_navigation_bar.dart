@@ -32,7 +32,7 @@ class BtmNavigationBar extends ConsumerStatefulWidget {
     if (location.startsWith('/MyRoom')) {
       return 3;
     }
-    if (location.startsWith('/Setting')) {
+    if (location.startsWith('/Review')) {
       return 4;
     }
     return 0;
@@ -47,7 +47,7 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
         resizeToAvoidBottomInset: true,
         body: widget.child,
         bottomNavigationBar: SizedBox(
-          height: 70,
+          height: 80,
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -71,8 +71,8 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
                 backgroundColor: backgroundColor,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.account_circle_outlined),
-                label: 'Settings',
+                icon: Icon(Icons.chat),
+                label: 'Review',
                 backgroundColor: backgroundColor,
               ),
             ],
@@ -83,8 +83,8 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
             onTap: (int idx) => _onItemTapped(idx, context),
             fixedColor: const Color.fromARGB(177, 202, 202, 202),
             unselectedItemColor: const Color.fromARGB(154, 147, 151, 165),
-            showUnselectedLabels: true,
-            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
             unselectedLabelStyle: GoogleFonts.nunito(
               fontWeight: FontWeight.w500,
               color: const Color.fromARGB(255, 90, 90, 90),
@@ -113,7 +113,7 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
         GoRouter.of(context).go('/MyRoom');
         break;
       case 4:
-        GoRouter.of(context).go('/Setting');
+        GoRouter.of(context).go('/Review');
         break;
     }
   }

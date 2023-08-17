@@ -54,7 +54,7 @@ Future<File?> select_icon(BuildContext context,
       });
 
   final picker = ImagePicker();
-  ImageSource imgScr;
+  var imgScr;
 
   if (SelectType == null) {
     return null;
@@ -205,7 +205,7 @@ Future<File?> select_myIcon(WidgetRef ref, BuildContext context,
       });
 
   final picker = ImagePicker();
-  ImageSource imgScr;
+  var imgScr;
 
   if (SelectType == null) {
     return null;

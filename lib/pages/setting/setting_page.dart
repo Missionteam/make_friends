@@ -11,8 +11,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:intl/intl.dart';
 
+import '../../functions/firestore_functions.dart';
+import '../../models/cloud_storage_model.dart';
 import '../../provider/auth_provider.dart';
 import '../../provider/users_provider.dart';
+import '../../widget/fundomental/userIconWidget.dart';
+import 'profile_setting_dialog.dart';
 
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
@@ -30,13 +34,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     //final user = ref.read(userProvider).value!;
     final uid = ref.watch(uidProvider);
     final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
-    final partnerUserDoc = ref.watch(partnerUserDocProvider).value;
     final String currentUserImageName =
         currentUserDoc?.get('photoUrl') ?? 'Girl';
     final String currentUserName =
-        currentUserDoc?.get('displayName') ?? 'お名前を登録してください。';
-    final String partnerUserName =
-        partnerUserDoc?.get('displayName') ?? 'お名前が登録されていません。';
+        currentUserDoc?.get('displayName') ?? '名前未登録';
 
     final imageUrl = ref.watch(imageUrlProvider(imageCloudPath)).value;
     return Scaffold(
@@ -93,7 +94,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
                                 if (image != null) {
                                   final imageRemotePath =
-                                      '$talkroomId/${DateFormat('MMddHH:mm:ssSSS').format(Timestamp.now().toDate())}';
+                                      '${DateFormat('MMddHH:mm:ssSSS').format(Timestamp.now().toDate())}';
                                   await uploadFile(image, imageRemotePath);
                                   setState(() {
                                     imageFile = image;
@@ -134,15 +135,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                                 const SizedBox(
                                   height: 10,
                                   width: 80,
-                                ),
-                                Text(
-                                  '  好きな人：$partnerUserName',
-                                  style: GoogleFonts.nunito(
-                                    fontSize:
-                                        (partnerUserName.length < 7) ? 12 : 8,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
@@ -196,19 +188,19 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               //     icon: Icons.chat_bubble_outline,
               //     text: 'ヘルプ＆フィードバック',
               //     onpressed: () {}),
-              MenuWidget(
-                  icon: Icons.person_add_rounded,
-                  text: 'パートナーと連携する',
-                  onpressed: () {
-                    showDialog(
-                        context: context, builder: (_) => LinkageDialog());
-                  }),
-              MenuWidget(
-                  icon: Icons.share,
-                  text: 'このアプリを共有',
-                  onpressed: () {
-                    showDialog(context: context, builder: (_) => ShareDialog());
-                  }),
+              // MenuWidget(
+              //     icon: Icons.person_add_rounded,
+              //     text: 'パートナーと連携する',
+              //     onpressed: () {
+              //       showDialog(
+              //           context: context, builder: (_) => LinkageDialog());
+              //     }),
+              // MenuWidget(
+              //     icon: Icons.share,
+              //     text: 'このアプリを共有',
+              //     onpressed: () {
+              //       showDialog(context: context, builder: (_) => ShareDialog());
+              //     }),
               // MenuWidget(
               //     icon: Icons.info_outline,
               //     text: 'ふたりべやについて',
@@ -222,8 +214,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   await FirebaseAuth.instance.signOut();
                 },
               ),
-
-              VersionBox()
             ],
           ),
         ),

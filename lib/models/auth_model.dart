@@ -85,7 +85,6 @@ class Authentication {
         ///CollectionPost
         final initpost = Post(
             text: '',
-            roomId: '',
             createdAt: Timestamp.now(),
             posterName: '',
             posterImageUrl: '',
@@ -166,7 +165,6 @@ class Authentication {
         ///CollectionPost
         final initpost = Post(
             text: '',
-            roomId: '',
             createdAt: Timestamp.now(),
             posterName: '',
             posterImageUrl: '',

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:make_friends_app/pages/auth_page/auth_checker.dart';
-import 'package:make_friends_app/pages/home_page/home.dart';
+import 'package:make_friends_app/pages/auth/auth_checker.dart';
+import 'package:make_friends_app/pages/home/home.dart';
+import 'package:make_friends_app/pages/review/review_page.dart';
+import 'package:make_friends_app/pages/setting/setting_page.dart';
 
 import '../widget/btm_navigation_bar.dart';
 
@@ -26,7 +28,19 @@ final GoRouter router = GoRouter(
           pageBuilder: (BuildContext context, GoRouterState state) {
             return const NoTransitionPage(child: HomePage());
           },
-        )
+        ),
+        GoRoute(
+          path: '/Settings',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return const NoTransitionPage(child: ProfilePage());
+          },
+        ),
+        GoRoute(
+          path: '/Review',
+          pageBuilder: (BuildContext context, GoRouterState state) {
+            return const NoTransitionPage(child: ReviewPage());
+          },
+        ),
         // GoRoute(
         //     path: '/NotificationPage',
         //     pageBuilder: (BuildContext context, GoRouterState state) {

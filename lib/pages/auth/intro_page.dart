@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
-import 'package:make_friends_app/pages/auth_page/mail_signin.dart';
+
+import 'mail_signin.dart';
 
 class IntroViewSample extends StatelessWidget {
   const IntroViewSample({Key? key}) : super(key: key);

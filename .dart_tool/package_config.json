@@ -260,12 +260,6 @@
       "languageVersion": "2.18"
     },
     {
-      "name": "flutter_lints",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
       "name": "flutter_local_notifications",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_local_notifications-13.0.0",
       "packageUri": "lib/",
@@ -420,12 +414,6 @@
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
-    },
-    {
-      "name": "lints",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
     },
     {
       "name": "logging",
@@ -746,7 +734,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-04-05T04:40:16.058015Z",
+  "generated": "2023-04-05T06:19:18.177210Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

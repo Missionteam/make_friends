@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../main.dart';
 import '../../provider/auth_provider.dart';
-import '../error_pages/error_screen.dart';
-import '../error_pages/loading_screen.dart';
+import '../error/error_screen.dart';
+import '../error/loading_screen.dart';
 import 'Intro_page.dart';
 
 class AuthChecker extends ConsumerWidget {

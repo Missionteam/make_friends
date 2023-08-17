@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:make_friends_app/pages/auth_page/auth_checker.dart';
+import 'package:make_friends_app/pages/auth/auth_checker.dart';
 import 'package:make_friends_app/provider/go_router.dart';
 import 'firebase_options.dart';
 

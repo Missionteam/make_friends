@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:make_friends_app/pages/auth_page/register.dart';
 
 import '../../models/auth_model.dart';
+import 'register.dart';
 
 enum Status {
   login,
