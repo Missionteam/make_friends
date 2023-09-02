@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:intl/intl.dart';
 
 import '../../models/cloud_storage_model.dart';
@@ -110,14 +109,12 @@ class _ReviewPageState extends ConsumerState<ReviewPage> {
   Widget build(BuildContext context) {
     //final user = ref.read(userProvider).value!;
     final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
-    final partnerUserDoc = ref.watch(partnerUserDocProvider).value;
 
     final String currentUserImageName =
         currentUserDoc?.get('photoUrl') ?? 'Girl';
     final String currentUserName =
         currentUserDoc?.get('displayName') ?? 'お名前を登録してください。';
-    final String partnerUserName =
-        partnerUserDoc?.get('displayName') ?? 'お名前が登録されていません。';
+
     final uid = ref.watch(uidProvider);
     final bool isDeveloper = (uid == '1kcT1PZsCMRFaZmy861Z5EBhR5X2' ||
         uid == 'zrg4iMBJbadqTComgGpGMtdortQ2');

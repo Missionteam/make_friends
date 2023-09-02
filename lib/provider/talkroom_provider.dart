@@ -39,6 +39,7 @@ final talkroomIdProvider = FutureProvider<String>((ref) async {
     final newUser = AppUser(
         id: uid,
         photoUrl: 'Girl',
+        openSettings: {'default': []},
         displayName: 'かな',
         updateAt: null,
         whatNowMessage: '',

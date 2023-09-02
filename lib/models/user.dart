@@ -6,6 +6,7 @@ import '../allConstants/all_constants.dart';
 class AppUser extends Equatable {
   final String id;
   final String photoUrl;
+  final Map<String, List<String>> openSettings;
   final String displayName;
   final Timestamp? updateAt;
   final String whatNowMessage;
@@ -20,6 +21,7 @@ class AppUser extends Equatable {
       required this.displayName,
       this.updateAt = null,
       this.whatNowMessage = '',
+      required this.openSettings,
       required this.talkroomId,
       required this.chtattingWith,
       required this.whatNow,
@@ -54,6 +56,7 @@ class AppUser extends Equatable {
         Consts.displayName: displayName,
         Consts.photoUrl: photoUrl,
         Consts.updateAt: updateAt,
+        'openSettings': openSettings,
         'whatNowMessage': whatNowMessage,
         Consts.talkroomId: talkroomId,
         'chattingWith': chtattingWith,
@@ -64,6 +67,13 @@ class AppUser extends Equatable {
   factory AppUser.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot) {
     final map = snapshot.data()!;
+    Map<String, dynamic> rawOpenSettings = map['openSettings'] ??
+        {
+          "defaut": [""]
+        }; // これがあなたが取得したデータです。
+    Map<String, List<String>> openSettings = Map.from(rawOpenSettings)
+        .map((key, value) => MapEntry(key, List<String>.from(value)));
+
     //     String photoUrl = "";
     // String nickname = "";
     // Timestamp? updateAt = null;
@@ -90,11 +100,13 @@ class AppUser extends Equatable {
     //     print(e);
     //   }
     // }
+
     return AppUser(
       id: snapshot.id,
       photoUrl: map[Consts.photoUrl] ?? 'Girl',
       displayName: map[Consts.displayName] ?? '',
       updateAt: map[Consts.updateAt],
+      openSettings: openSettings,
       whatNowMessage: map['whatNowMessage'] ?? '',
       talkroomId: map[Consts.talkroomId] ?? '',
       chtattingWith: map[Consts.chattingWith] ?? 'P18KIdVBUqdcqVGyJt6moTLoONf2',

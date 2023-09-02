@@ -38,10 +38,8 @@ class _MyProfileSettingPageState extends ConsumerState<MyProfileSettingPage> {
   @override
   Widget build(BuildContext context) {
     final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
-    final partnerUseDoc = ref.watch(partnerUserDocProvider).value;
     final uid = ref.watch(uidProvider);
-    final String partnerName =
-        partnerUseDoc?.get('displayName') ?? '恋人が登録されていません。';
+
     final String currentUserImageName =
         currentUserDoc?.get('photoUrl') ?? 'Girl';
     final String currentUserName =
@@ -165,7 +163,6 @@ class _MyProfileSettingPageState extends ConsumerState<MyProfileSettingPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('恋人：${partnerName}'),
                   Container(
                     height: 37,
                     width: 80,

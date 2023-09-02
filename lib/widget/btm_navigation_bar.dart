@@ -20,20 +20,14 @@ class BtmNavigationBar extends ConsumerStatefulWidget {
 
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith('/Home')) {
+    if (location.startsWith('/Chat')) {
       return 0;
     }
-    if (location.startsWith('/Chat')) {
+    if (location.startsWith('/Home')) {
       return 1;
     }
-    if (location.startsWith('/RoomGrid')) {
-      return 2;
-    }
-    if (location.startsWith('/MyRoom')) {
-      return 3;
-    }
     if (location.startsWith('/Review')) {
-      return 4;
+      return 2;
     }
     return 0;
   }
@@ -51,29 +45,19 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
+                icon: Icon(Icons.crisis_alert),
+                label: 'Chat',
+                backgroundColor: backgroundColor,
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
                 backgroundColor: backgroundColor,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.question_answer_outlined),
-                label: 'Chat',
-                backgroundColor: backgroundColor,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.import_contacts_rounded),
-                label: 'Rooms',
-                backgroundColor: Color.fromARGB(255, 180, 35, 35),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.textsms_outlined),
-                label: 'Note',
-                backgroundColor: backgroundColor,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat),
+                icon: Icon(Icons.rate_review_outlined),
                 label: 'Review',
-                backgroundColor: backgroundColor,
+                backgroundColor: Color.fromARGB(255, 180, 35, 35),
               ),
             ],
             currentIndex: BtmNavigationBar._calculateSelectedIndex(context),
@@ -104,17 +88,12 @@ class _BtmNavigationBarState extends ConsumerState<BtmNavigationBar> {
         GoRouter.of(context).go('/Home');
         break;
       case 1:
-        GoRouter.of(context).go('/Chat');
+        GoRouter.of(context).go('/Home');
         break;
       case 2:
-        GoRouter.of(context).go('/RoomGrid');
-        break;
-      case 3:
-        GoRouter.of(context).go('/MyRoom');
-        break;
-      case 4:
         GoRouter.of(context).go('/Review');
         break;
+      case 3:
     }
   }
 }

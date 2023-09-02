@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:make_friends_app/models/express.dart';
+import 'package:make_friends_app/functions/send_express.dart';
+import 'package:make_friends_app/models/expressItem.dart';
 import 'package:make_friends_app/widget/fundomental/mock/Circle.dart';
 
 class ConfirmExpressDialogContent extends ConsumerStatefulWidget {
@@ -44,6 +45,8 @@ class ConfirmExpressDialogContentState
         ),
         ElevatedButton(
             onPressed: () {
+              for (final expressItem in widget.selecedExpress)
+                sendExpress(ref, expressItem);
               Navigator.of(context).pop();
             },
             child: Text('OK'))

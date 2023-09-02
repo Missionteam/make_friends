@@ -4,6 +4,8 @@ import 'package:make_friends_app/widget/fundomental/mock/Circle.dart';
 import 'package:make_friends_app/widget/fundomental/userIconWidget.dart';
 
 import '../../provider/auth_provider.dart';
+import '../fundomental/express/join_dialog_content.dart';
+import '../fundomental/modal/simple_dialog.dart';
 
 class UsersCard extends ConsumerStatefulWidget {
   const UsersCard({super.key});
@@ -53,7 +55,16 @@ class _UsersCardState extends ConsumerState<UsersCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 OutlinedButton(
-                  onPressed: () => {},
+                  onPressed: (() => {
+                        showMyDialog(context,
+                            color: Colors.white,
+                            onButtonPressd: null,
+                            height: 280,
+                            buttonExist: false,
+                            child: JoinDialogContent(
+                              uid: uid ?? '',
+                            ))
+                      }),
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(80, 26),
                     foregroundColor: Color.fromRGBO(25, 118, 210, 1),

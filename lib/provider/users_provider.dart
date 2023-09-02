@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/intl.dart';
 
 import '../allConstants/all_constants.dart';
 import '../models/user.dart';
@@ -40,6 +39,7 @@ final currentAppUserDocSetter = FutureProvider((ref) async {
         photoUrl: 'Girl',
         displayName: 'かな',
         updateAt: null,
+        openSettings: {'default': []},
         whatNowMessage: '',
         talkroomId: uid,
         chtattingWith: 'P18KIdVBUqdcqVGyJt6moTLoONf2',
@@ -71,20 +71,13 @@ final currentUserProvider = Provider<AppUser?>((ref) {
   return data;
 });
 
-final partnerUserDocRefProvider = Provider<DocumentReference<AppUser>>((ref) {
-  final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
-  final String partnerUid =
-      currentUserDoc?.get('chattingWith') ?? 'P18KIdVBUqdcqVGyJt6moTLoONf2';
+///仮置きで全ユーザーに
+// TODO：自分の友達だけにする
+final friendsProvider = StreamProvider((ref) {
+  // final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
+  // final List<String> friends = currentUserDoc?.get('friends') ?? [];
   final appUsersReference = ref.watch(appUsersReferenceProvider);
-  return appUsersReference.doc(partnerUid);
-});
-
-final partnerUserDocProvider = StreamProvider((ref) {
-  final currentUserDoc = ref.watch(currentAppUserDocProvider).value;
-  final partnerUid =
-      currentUserDoc?.get('chattingWith') ?? 'P18KIdVBUqdcqVGyJt6moTLoONf2';
-  final appUserReference = ref.watch(appUsersReferenceProvider);
-  return appUserReference.doc(partnerUid).snapshots();
+  return appUsersReference.snapshots();
 });
 
 // final EngageStampNameProvider = StreamProvider<String>((ref) {
@@ -133,72 +126,10 @@ final userupdateAtProvider = FutureProvider((ref) {
   return updateAt;
 });
 
-final PartnerfcmTokenProvider = FutureProvider<String?>((ref) {
-  final partnerAppUserDoc = ref.watch(partnerUserDocProvider).value;
-  return partnerAppUserDoc?.get('fcmToken');
-});
-
-final partnerWhatNowNameProvider = FutureProvider<String?>((ref) {
-  final partnerAppUserDoc = ref.watch(partnerUserDocProvider).value;
-  return partnerAppUserDoc?.get('whatNow');
-});
-
-final partnerWhatNowProvider = Provider((ref) {
-  final stampnamevalue = ref.watch(partnerWhatNowNameProvider).value;
-  final stampname = stampnamevalue ?? 'NoStamp.png';
-  return Image.asset('images/whatNowStamp/$stampname');
-});
-final partnerWhatNowMessageProvider = FutureProvider<String?>((ref) {
-  final partnerAppUserDoc = ref.watch(partnerUserDocProvider).value;
-  final whatNowMessage = partnerAppUserDoc?.data()?.whatNowMessage ?? '';
-  return whatNowMessage;
-});
-final partnerUpdateAtProvider = FutureProvider((ref) {
-  final currentAppUserDoc = ref.watch(currentAppUserDocProvider).value;
-  final updateAt = currentAppUserDoc?.data()?.updateAt;
-  return updateAt;
-});
-
-final whatNowNameProvider = Provider.family((ref, bool isUser) {
-  final userWhatNowName =
-      ref.watch(userWhatNowNameProvider).value ?? 'NoStamp.png';
-  final partnerWhatNowName =
-      ref.watch(partnerWhatNowNameProvider).value ?? 'NoStamp.png';
-
-  return (isUser == true) ? userWhatNowName : partnerWhatNowName;
-});
-
 final isGirlProvider = Provider<bool>((ref) {
   final bool isGirl =
       ref.watch(currentAppUserDocProvider).value?.get('isGirl') ?? true;
   return isGirl;
-});
-
-final whatNowDisplayNameProvider = Provider.family((ref, bool isUser) {
-  final userDoc = ref.watch(currentAppUserDocProvider).value;
-  final userName = userDoc?.get('displayName') ?? '';
-  final partnerDoc = ref.watch(partnerUserDocProvider).value;
-  final String partnerName = partnerDoc?.get('displayName') ?? '';
-
-  return (isUser == true) ? userName : partnerName;
-});
-
-final whatNowMessageProvider = Provider.family((ref, bool isUser) {
-  final userWhatNowMessage = ref.watch(userWhatNowMessageProvider).value ?? '';
-  final partnerWhatNowMessage =
-      ref.watch(partnerWhatNowMessageProvider).value ?? '';
-  return (isUser == true) ? userWhatNowMessage : partnerWhatNowMessage;
-});
-final whatNowUpdateAtProvider = Provider.family((ref, bool isUser) {
-  final userTimestamp = ref.watch(userupdateAtProvider).value?.toDate();
-  final userUpdateAt = (userTimestamp != null)
-      ? DateFormat('MM/dd HH:mm').format(userTimestamp).toString()
-      : '';
-  final partnerTimestamp = ref.watch(partnerUpdateAtProvider).value?.toDate();
-  final partnerUpdateAt = (partnerTimestamp != null)
-      ? DateFormat('MM/dd HH:mm').format(partnerTimestamp).toString()
-      : '';
-  return (isUser == true) ? userUpdateAt : partnerUpdateAt;
 });
 
 @immutable

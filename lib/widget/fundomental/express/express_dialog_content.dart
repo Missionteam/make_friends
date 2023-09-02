@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:make_friends_app/models/express.dart';
+import 'package:make_friends_app/functions/firestore_functions.dart';
+import 'package:make_friends_app/models/expressItem.dart';
 import 'package:make_friends_app/utils/text.dart';
-import 'package:make_friends_app/widget/fundomental/express/confirm_express_dialog_content.dart';
-import 'package:make_friends_app/widget/fundomental/modal/simple_dialog.dart';
 import 'package:make_friends_app/widget/users_list/segmented_button.dart';
 import 'package:make_friends_app/widget/users_list/segments/express_type.dart';
+
+import '../../../functions/send_express.dart';
 
 class ExpressDialogContent extends ConsumerStatefulWidget {
   ExpressDialogContent({Key? key}) : super(key: key);
@@ -87,12 +88,18 @@ class ExpressDialogContentState extends ConsumerState<ExpressDialogContent> {
             OutlinedButton(onPressed: () {}, child: Text('Cancel')),
             ElevatedButton(
               onPressed: () {
+                ///一旦デバック用として、確認Dialogを飛ばす。
+                for (final expressItem in this.selectedExpress)
+                  sendExpress(ref, expressItem);
+
+                updateUserData(ref, field: 'express', value: "feel");
+
                 Navigator.of(context).pop();
-                showMyDialog(context,
-                    onButtonPressd: (() {}),
-                    child: ConfirmExpressDialogContent(
-                      selecedExpress: selectedExpress,
-                    ));
+                // showMyDialog(context,
+                //     onButtonPressd: (() {}),
+                //     child: ConfirmExpressDialogContent(
+                //       selecedExpress: selectedExpress,
+                //     ));
               },
               child: Text('OK'),
             ),

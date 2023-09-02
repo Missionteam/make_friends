@@ -8,8 +8,8 @@ import 'package:make_friends_app/widget/fundomental/express/express_dialog_conte
 import 'package:make_friends_app/widget/fundomental/grid_view_dialog.dart';
 import 'package:make_friends_app/widget/fundomental/modal/simple_dialog.dart';
 import 'package:make_friends_app/widget/users_card/users_card.dart';
+import 'package:make_friends_app/widget/users_list/express_list.dart';
 import 'package:make_friends_app/widget/users_list/segments/date.dart';
-import 'package:make_friends_app/widget/users_list/users_list.dart';
 
 import '../../provider/users_provider.dart';
 import '../../widget/fundomental/post_widget.dart';
@@ -72,17 +72,18 @@ class _HomePageState extends ConsumerState<HomePage> {
                       items: dateSegment,
                     )),
                 SizedBox(height: 20),
-                UsersList(),
-                SizedBox(height: 20),
-                UsersList(),
-                SizedBox(height: 20),
-                UsersList(),
-                SizedBox(height: 20),
+                ExpressList(),
+                // UsersList(),
+                // SizedBox(height: 20),
+                // UsersList(),
+                // SizedBox(height: 20),
+                // UsersList(),
+                // SizedBox(height: 20),
               ],
             ),
             Positioned(
                 right: 0,
-                top: 60,
+                top: 50,
                 child: IconButton(
                     onPressed: () => context.push('/Settings'),
                     icon: Icon(Icons.settings))),

@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:intl/intl.dart';
+import 'package:make_friends_app/pages/setting/open_setting_page.dart';
 
 import '../../functions/firestore_functions.dart';
 import '../../models/cloud_storage_model.dart';
@@ -182,6 +182,15 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               //     icon: Icons.lock_person_outlined,
               //     text: 'プライバシー',
               //     onpressed: () {}),
+              MenuWidget(
+                  icon: Icons.lock_person_outlined,
+                  text: '公開範囲の設定',
+                  onpressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => OpenSettingPage()),
+                    );
+                  }),
 
               // /*  */
               // MenuWidget(
